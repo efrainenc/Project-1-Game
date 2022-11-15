@@ -1,8 +1,61 @@
+/* Core Body and Text*/
 body{
     background-color:rgb(83, 83, 83);
 }
-.simon{/*create 2x2 grid*/
-    margin: 200px auto;
+h1{
+    display: grid;
+    justify-content: center;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+}
+h2{
+    display: grid;
+    justify-content: center;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+}
+/* Start and Quit Menu */
+.menu{
+    display: grid;
+    justify-content: space-between;
+}
+.start{
+    display: grid;
+    grid-row: 1;
+    color: white;
+    font-size: 40px;
+    border: none;
+    background: none;
+}
+.quit{
+    display: grid;
+    grid-row: 1;
+    color: white;
+    font-size: 40px;
+    border: none;
+    background: none;
+}
+
+/* Score Display*/
+.score{
+    display: grid;
+    justify-content: space-evenly;
+}
+.currScore{
+    display: grid;
+    grid-row: 1;
+    color: white;
+    font-size: 30px;
+}
+.highScore{
+    display: grid;
+    grid-row: 1;
+    color: white;
+    font-size: 30px;
+}
+/*create 2x2 grid w/ respective colors*/
+.simon{
+    margin: 100px auto;
     width: 500px;
     height: 500px;
     display: grid;
