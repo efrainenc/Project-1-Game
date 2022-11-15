@@ -1,0 +1,13 @@
+body{
+    background-color:rgb(83, 83, 83);
+}
+.simon{/*create 2x2 grid*/
+    margin: 200px auto;
+    width: 500px;
+    height: 500px;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 300px 300px;
+    grid-column-gap: 15px;
+    grid-row-gap: 15px;
+}
