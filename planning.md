@@ -12,7 +12,7 @@ create 4 total elements with different color values
 randomly select a value to blink
 await for blink to complete
 store that value in an array
-take useer input (dependent on value(color) of clickable square containers)
+take user input (dependent on value(color) of clickable square containers)
 store user input in array and compare to computer array
 if equal append new value to array and blink squares accordingly
 use javascript async functions to blink next square a set intrval(setTimeout) after first square blinks and etc

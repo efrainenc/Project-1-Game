@@ -1,18 +1,17 @@
 /* Core Body and Text*/
 body{
     background-color:rgb(83, 83, 83);
+    font-family: 'Courier New', Courier, monospace;
 }
 h1{
     display: grid;
     justify-content: center;
     color: white;
-    font-family: 'Courier New', Courier, monospace;
 }
 h2{
     display: grid;
     justify-content: center;
     color: white;
-    font-family: 'Courier New', Courier, monospace;
 }
 /* Start and Quit Menu */
 .menu{
@@ -22,6 +21,7 @@ h2{
 .start{
     display: grid;
     grid-row: 1;
+    font-family: 'Courier New', Courier, monospace;
     color: white;
     font-size: 40px;
     border: none;
@@ -30,6 +30,7 @@ h2{
 .quit{
     display: grid;
     grid-row: 1;
+    font-family: 'Courier New', Courier, monospace;
     color: white;
     font-size: 40px;
     border: none;
