@@ -9,8 +9,6 @@ const startBtn = document.querySelector(".start")
 const quitBtn = document.querySelector(".quit")
 
 
-// create a temp dynamic array to store computer chosen sequence
-// create function to choose color
 // if color selected then change(blink) color accordingly
 // store color selected into temp array
 // take user input && if userInput === computerSequence => continue; else "GAME OVER" & break;
@@ -21,12 +19,6 @@ const quitBtn = document.querySelector(".quit")
 let playerChoice = [];
 
 
-// starts game and displays first sequence sequence
-function startGame(){
-
-    //nextLvl();
-}
-
 // call this to find new color; (if user correct then push this return to computerChoice array)
 function newColor(){
     // store possible choices
@@ -36,16 +28,43 @@ function newColor(){
     return randColor;
 }
 
-// begins the next level and pushes new color to the array
+// pushes new color to the array & starts the next level
 function nextLvl(){
     const computerChoice = [];
     computerChoice.push(newColor());
+    startLvl(computerChoice);
+}
+
+// starts game and displays first sequence
+function startGame(){
+
+    nextLvl();
+}
+
+// blinks the colors passed in from startLvl
+function blinkColor(color){
+    // will call value ".color" to blink white
+    const blink = document.querySelector(`.${color}`).style.backgroundColor = "white";
+    // reverts to original color (.5sec blink duration)
+    setTimeout(blink.style.backgroundColor = `.${color}`, 500);
+}
+
+// takes the computer generated color choice array and calls blink function for each color element in array;
+function startLvl(computerChoice){
+    for(let i=0; i<computerChoice.length; i++){
+        color = computerChoice[i]; // store computer selected colors to blink
+        setTimeout(blinkColor(color), 1000);// waits 1 second before blinking
+    }
 }
 
 
 function tempFunction(){
 
 }
+
+
+
+
 // Simons Colored Button Listeners
 redBtn.addEventListener("click", tempFunction);
 greenBtn.addEventListener("click", tempFunction);
