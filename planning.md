@@ -22,7 +22,8 @@ continue game loop;
 
 
 A wireframe of your "main" game screen:
-(Pen and paper sketch is fine, but many students find [https://www.figma.com/](https://www.figma.com/) helpful)
+
+I did pen and paper sketch
 
 
 
