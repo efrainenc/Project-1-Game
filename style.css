@@ -11,3 +11,23 @@ body{
     grid-column-gap: 15px;
     grid-row-gap: 15px;
 }
+.red{
+    background-color: red;
+    border-radius: 30px;
+    border-color: lightcoral;
+}
+.green{
+    background-color: green;
+    border-radius: 30px;
+    border-color: greenyellow;
+}
+.blue{
+    background-color: blue;
+    border-radius: 30px;
+    border-color: skyblue;
+}
+.yellow{
+    background-color: yellow;
+    border-radius: 30px;
+    border-color: goldenrod;
+}
