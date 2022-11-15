@@ -17,3 +17,19 @@ const quitBtn = document.querySelector(".quit")
 // take user input && if userInput === computerSequence => continue; else "GAME OVER" & break;
 // generate new box# to select, blink then append to temp array that stores computer generated sequence
 // take user input and compare to stored computer input and continue cycle
+
+// temp arrays to store order of button sequences
+let computerChoice = [];
+let playerChoice = [];
+
+function tempFunction(){
+
+}
+// Simons Colored Button Listeners
+redBtn.addEventListener("click", tempFunction);
+greenBtn.addEventListener("click", tempFunction);
+blueBtn.addEventListener("click", tempFunction);
+yellowBtn.addEventListener("click", tempFunction);
+// Menu Event Listeners
+startBtn.addEventListener("click", tempFunction);
+quitBtn.addEventListener("click", tempFunction);
