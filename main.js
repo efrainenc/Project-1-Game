@@ -1,7 +1,6 @@
 
 // import colored buttons for Simon
 const redBtn = document.querySelector(".red");
-console.log(redBtn)
 const greenBtn = document.querySelector(".green");
 const blueBtn = document.querySelector(".blue");
 const yellowBtn = document.querySelector(".yellow");
@@ -16,8 +15,6 @@ const quitBtn = document.querySelector(".quit");
 // generate new color to select, blink then append to temp array that stores computer generated sequence
 // take user input and compare to stored computer input and continue cycle until user fails.
 
-// to store player color choices
-let playerChoice = [];
 
 
 // call this to find new color; (if user correct then push this return to computerChoice array)
@@ -46,40 +43,55 @@ function quitGame(){
 }
 
 // blinks the colors passed in from startLvl
-function blinkColor(color){
+function blinkColor(color, computerChoice){
     // will call button value ".color" to blink white
     const blink = document.querySelector(`.${color}`);
     console.log(color)
     blink.style.backgroundColor = "white";
     // reverts to original color (.5sec blink duration)
-    setTimeout(() => blink.style.backgroundColor = "", 500);
+    setTimeout(() => blink.style.backgroundColor = "", 180);
     // await user input
-
+    userPlay(computerChoice)
     // if user input matches computer input then begin next lvl
     if(computerChoice === playerChoice){
         nextLvl();
     }
 }
 
+function userPlay(computerChoice){
+    // to store player color choices
+    let playerChoice = [];
+    for(let i=0; i<computerChoice.length; i++){
+        playerChoice.push(readUserInput)
+    }
+    return playerChoice;
+}
+
 // takes the computer generated color choice array and calls blink function for each color element in array;
 function startLvl(computerChoice){
     for(let i=0; i<computerChoice.length; i++){
         color = computerChoice[i]; // store computer selected colors to blink
-        setTimeout(blinkColor(color), 1000);// waits 1 second before blinking
+        setTimeout(blinkColor(color, computerChoice), 1000);// waits 1 second before blinking
     }
 }
 
 
-function userInput(){
-    //store and call compare function
-    return "click detected"
+function readUserInput(userInput){
+    // Simons Colored Button Listeners
+    redBtn.addEventListener("click", () =>{
+        return `${redBtn.className}`;
+    });
+    greenBtn.addEventListener("click", () =>{
+        return `${greenBtn.className}`;
+    });
+    blueBtn.addEventListener("click", () =>{
+        return `${blueBtn.className}`;
+    });
+    yellowBtn.addEventListener("click", () =>{
+        return `${yellowBtn.className}`;
+    });
 }
 
-// Simons Colored Button Listeners
-redBtn.addEventListener("click", userInput);
-greenBtn.addEventListener("click", userInput);
-blueBtn.addEventListener("click", userInput);
-yellowBtn.addEventListener("click", userInput);
 // Menu Event Listeners
 startBtn.addEventListener("click", startGame)
 quitBtn.addEventListener("click", quitGame);
