@@ -1,31 +1,28 @@
 /* Core Body and Text*/
 body{
-    background-color:rgb(83, 83, 83);
+    display: grid;
+    background-color: rgb(209, 209, 209);
     font-family: 'Courier New', Courier, monospace;
 }
-h1{
+h1, h2{
     display: grid;
     justify-content: center;
-    color: white;
-}
-h2{
-    display: grid;
-    justify-content: center;
-    color: white;
+    color: rgb(255, 255, 255);
+    text-shadow: 2px 2px 4px #000000;
 }
 /* Start and Quit Menu */
-.menu{
+#menu{
     display: grid;
     justify-content: space-between;
 }
 .start{
-    display: grid;
     grid-row: 1;
     font-family: 'Courier New', Courier, monospace;
     color: white;
     font-size: 40px;
     border: none;
     background: none;
+    text-shadow: 2px 2px 4px #000000;
 }
 .quit{
     display: grid;
@@ -35,10 +32,11 @@ h2{
     font-size: 40px;
     border: none;
     background: none;
+    text-shadow: 2px 2px 4px #000000;
 }
 
 /* Score Display*/
-.score{
+#score{
     display: grid;
     justify-content: space-evenly;
 }
@@ -47,41 +45,50 @@ h2{
     grid-row: 1;
     color: white;
     font-size: 30px;
+    text-shadow: 2px 2px 4px #000000;
 }
 .highScore{
     display: grid;
     grid-row: 1;
     color: white;
     font-size: 30px;
+    text-shadow: 2px 2px 4px #000000;
 }
 /*create 2x2 grid w/ respective colors*/
-.simon{
+#simon{
     margin: 100px auto;
-    width: 500px;
-    height: 500px;
+    width: 620px;
+    height: 520px;
     display: grid;
     justify-content: center;
     grid-template-columns: 300px 300px;
     grid-column-gap: 15px;
     grid-row-gap: 15px;
+    border-radius: 70%;
+    overflow: hidden;
+    padding: 10px;
 }
 .red{
     background-color: red;
     border-radius: 30px;
     border-color: lightcoral;
+    box-shadow: 2px 2px 4px #000000;
 }
 .green{
     background-color: green;
     border-radius: 30px;
     border-color: greenyellow;
+    box-shadow: 2px 2px 4px #000000;
 }
 .blue{
     background-color: blue;
     border-radius: 30px;
     border-color: skyblue;
+    box-shadow: 2px 2px 4px #000000;
 }
 .yellow{
     background-color: yellow;
     border-radius: 30px;
     border-color: goldenrod;
+    box-shadow: 2px 2px 4px #000000;
 }
