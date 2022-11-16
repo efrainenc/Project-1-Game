@@ -36,14 +36,12 @@ function newColor(){
 }
 
 // pushes new color to the array & starts the next level
-async function nextLvl(){
-    let computerChoice = [];
-    computerChoice.push(newColor());
+async function nextLvl(computerChoice){
     const computerInput = await startLvl(computerChoice);
     console.log(computerInput);
 
     // await user input
-    const userInput = await userPlay(computerChoice);
+    const userInput = await userPlay();
     console.log(userInput)
     // if user input matches computer input then begin next lvl
     if(computerInput === userInput){
@@ -56,8 +54,8 @@ async function nextLvl(){
 
 // starts game and displays first sequence
 function startGame(){
-    //
-    nextLvl();
+    let computerChoice = [];
+    nextLvl(computerChoice);
 }
 function quitGame(){
     // ends the game by resetting and emptying all values back to default
@@ -73,17 +71,16 @@ function blinkColor(color){
     setTimeout(() => blink.style.backgroundColor = "", 180);
 }
 
-function userPlay(computerChoice){
+async function userPlay(){
     // to store player color choices
-    console.log("Waiting for player input")
-    for(let i=0; i<computerChoice.length; i++){
-        playerChoice.push(readUserInput);
-    }
+    console.log("Waiting for player input");
+    playerChoice.push(readUserInput);
     return playerChoice;
 }
 
 // takes the computer generated color choice array and calls blink function for each color element in array;
 function startLvl(computerChoice){
+    computerChoice.push(newColor());
     for(let i=0; i<computerChoice.length; i++){
         setTimeout(blinkColor(computerChoice[i]), 1000);// waits 1 second before blinking
     }
