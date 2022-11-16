@@ -22,7 +22,6 @@ const quitBtn = document.querySelector(".quit");
 // Global Variables to keep score
 let score = 0;
 let highScore = 0;
-let playerChoice = [];
 let compColor = [];
 
 
@@ -74,8 +73,10 @@ function blinkColor(color){
 async function userPlay(){
     // to store player color choices
     console.log("Waiting for player input");
-    playerChoice.push(readUserInput);
-    return playerChoice;
+    // reads and pushes input into playerChoice
+    const playerSequence = readUserInput();
+    // allow for string of inputs
+    return playerSequence;
 }
 
 // takes the computer generated color choice array and calls blink function for each color element in array;
@@ -88,20 +89,26 @@ function startLvl(computerChoice){
 }
 
 
-function readUserInput(){
+function readUserInput(score){
+    let playerChoice = [];
     // Simons Colored Button Listeners
     redBtn.addEventListener("click", () =>{
-        return `${redBtn.className}`;
+        playerChoice.push(`${redBtn.className}`);
     });
     greenBtn.addEventListener("click", () =>{
-        return `${greenBtn.className}`;
+        playerChoice.push(`${greenBtn.className}`);
     });
     blueBtn.addEventListener("click", () =>{
-        return `${blueBtn.className}`;
+        playerChoice.push(`${blueBtn.className}`);
     });
     yellowBtn.addEventListener("click", () =>{
-        return `${yellowBtn.className}`;
+        playerChoice.push(`${yellowBtn.className}`);
     });
+
+    setTimeout(() => {// will return whatever playerChoice is after setTime based on score(more time allocated longer the sequence)
+        return playerChoice
+    }
+    , 3000 * (score+1));
 }
 
 // Menu Event Listeners
