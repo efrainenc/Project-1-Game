@@ -55,6 +55,8 @@ h1, h2{
     grid-template-columns: 300px 300px;
     grid-column-gap: 15px;
     grid-row-gap: 15px;
+    border-radius: 70%;
+    overflow: hidden;
 }
 .red{
     background-color: rgb(240, 73, 73);

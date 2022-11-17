@@ -44,6 +44,7 @@ function nextLvl(){
     cpuPlay(computerChoice)
     // reset playerChoice each level
     playerChoice = [];
+    setTimeout(() => h2.innerHTML = "YOUR TURN!", (score+1) * 800);
     // wait for user input and check if correct
     setTimeout(() => {
         h2.innerHTML = "TURN OVER!"
@@ -65,7 +66,7 @@ function nextLvl(){
             alert("GAME OVER!")
             return;
         }
-    }, (score+1) * 2500);// more time based on score;
+    }, (score+1) * 4000);// more time based on score;
 }
 
 // starts game and displays first sequence
@@ -94,7 +95,6 @@ function cpuPlay(){
     computerChoice.forEach((color, i) => {
         setTimeout(() =>{
             blinkColor(color)
-            h2.innerHTML = "YOUR TURN!"
         }, (i + 1) * 500);// increments for each element so they dont overlap and blink simultaneously
     });
 }
