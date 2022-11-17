@@ -24,7 +24,6 @@ let score = 0;
 let highScore = 0;
 let compColor = [];
 let playerChoice = [];
-let userPlaying = true;
 
 
 // Randomly selects color and outputs it
@@ -100,7 +99,7 @@ function startLvl(computerChoice){
 
 function readUserInput(score, computerChoice){
     playerChoice = [];
-// will return whatever playerChoice is after setTime based on score(more time allocated longer the sequence)
+    // if player and computer inputs same size then return
     if(computerChoice.length === playerChoice.length){
         setTimeout(() => {
             return playerChoice
@@ -114,8 +113,7 @@ function readUserInput(score, computerChoice){
 // Menu Event Listeners
 startBtn.addEventListener("click", startGame)
 quitBtn.addEventListener("click", quitGame);
-// while it is the Users turn to play, buttons will return inputs so computer is not interupted;
-while(userPlaying){
+
 // Simons Colored Button Listeners
 redBtn.addEventListener("click", () =>{
     playerChoice.push("red");
@@ -133,4 +131,3 @@ yellowBtn.addEventListener("click", () =>{
     playerChoice.push("yellow");
     console.log(playerChoice);
 });
-}
