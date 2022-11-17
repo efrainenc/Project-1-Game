@@ -10,16 +10,17 @@ const h2 = document.querySelector("h2");
 const startBtn = document.querySelector(".start");
 const quitBtn = document.querySelector(".quit");
 
-//////////
-// Psuedo
-// if color selected then change(blink) color accordingly
-// store color selected into temp array
-// take user input && if userInput === computerSequence => continue; else "GAME OVER" & break;
-// generate new color to select, blink then append to temp array that stores computer generated sequence
-// take user input and compare to stored computer input and continue cycle until user fails.
+/////////////////
+// Sound Storage
+const sounds = {
+    red: new Audio("https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"),
+    green: new Audio("https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"),
+    blue: new Audio("https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"),
+    yellow: new Audio ("https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"),
+};
 
-//////////////////////////////////
-// Global Variables to keep score
+////////////////////
+// Global Variables
 let score = 0;
 let highScore = 0;
 let compColor = [];
@@ -36,31 +37,33 @@ function newColor(){
     return randColor;
 }
 
-
-
 // Generates a new color sequence and awaits user input
 function nextLvl(){
     // generate new CPU sequence
     cpuPlay(computerChoice)
     // reset playerChoice each level
     playerChoice = [];
+    // Tells user its their turn
     setTimeout(() => h2.innerHTML = "YOUR TURN!", (score+1) * 800);
+
     // wait for user input and check if correct
     setTimeout(() => {
         h2.innerHTML = "TURN OVER!"
         console.log(playerChoice)
         console.log(computerChoice)
         if(computerChoice.length === playerChoice.length){
+            // if correct, tell user and increment score
             h2.innerHTML = "CORRECT"
             score++;
             document.querySelector(".currScore").innerHTML = `Current Score: ${score}`
             if(score > highScore){// set high score
                 highScore = score;
                 document.querySelector(".highScore").innerHTML = `High Score: ${score}`
-            } else if(score === 25){
+            } else if(score === 25){ // Winning score
                 alert("YOU WIN! YOU COMPLETED ALL 25 LEVELS!")
+                return;
             }
-            nextLvl();
+            nextLvl(); // start next level
         }else{
             h2.innerHTML = "GAME OVER!";
             // alert("GAME OVER!")
@@ -84,15 +87,23 @@ function blinkColor(color){
     if(color == "red"){
         blink.style.background = "radial-gradient(lightcoral, rgb(240, 73, 73))";
         // play red sound
+        sounds.red.play()
+        // change page bg red
     }else if(color == "green"){
         blink.style.background = "radial-gradient(greenyellow, rgb(30, 153, 30))";
         //play green sound
+        sounds.green.play()
+        // change page bg green
     }else if(color == "blue"){
         blink.style.background = "radial-gradient(skyblue, rgb(72, 72, 255))";
         //play blue sound
+        sounds.blue.play()
+        // change page bg blue
     }else if(color == "yellow"){
         blink.style.background = "radial-gradient(lightyellow, gold)";
         //play yellow sound
+        sounds.yellow.play()
+        // change page bg yellow
     }
     // reverts to original color (.5sec blink duration)
     setTimeout(() => blink.style.background = "", 180);
