@@ -47,7 +47,7 @@ async function nextLvl(){
     setTimeout(() => {
         console.log(playerChoice)
         console.log(computerChoice)
-        if(computerChoice == playerChoice){
+        if(computerChoice.values == playerChoice.values){
             console.log("WE IN!")
             score++;
             document.querySelector(".currScore").innerHTML = `Current Score: ${score}`
@@ -55,7 +55,7 @@ async function nextLvl(){
         }else{
             console.log("WRONG!");
         }
-    }, 70000)
+    }, 7000)
 }
 
 // starts game and displays first sequence
@@ -96,7 +96,7 @@ async function userPlay(){
 function cpuPlay(){
     computerChoice.push(newColor());
     for(let i=0; i<computerChoice.length; i++){
-        setTimeout(blinkColor(computerChoice[i]), 1500);// waits 1 second before blinking
+        setTimeout(blinkColor(computerChoice[i]), 3000);
     }
     return computerChoice;
 }
