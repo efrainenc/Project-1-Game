@@ -40,14 +40,15 @@ function newColor(){
 
 // Generates a new color sequence and awaits user input
 async function nextLvl(){
+    // generate new CPU sequence
     cpuPlay(computerChoice);
-    // await user input
-    userPlay(computerChoice);
-    // if user input matches computer input then begin next lvl
+    // reset playerChoice each level
+    playerChoice = [];
+    // wait for user input and check if correct
     setTimeout(() => {
         console.log(playerChoice)
         console.log(computerChoice)
-        if(computerChoice.values == playerChoice.values){
+        if(computerChoice.values === playerChoice.values && computerChoice.length === playerChoice.length){
             console.log("WE IN!")
             score++;
             document.querySelector(".currScore").innerHTML = `Current Score: ${score}`
@@ -55,7 +56,7 @@ async function nextLvl(){
         }else{
             console.log("WRONG!");
         }
-    }, 7000)
+    }, (score+1) * 4000);// more time based on score;
 }
 
 // starts game and displays first sequence
@@ -73,24 +74,9 @@ function blinkColor(color){
     // will call button value ".color" to blink white
     const blink = document.querySelector(`.${color}`);
     console.log(color)
-    setTimeout(() => blink.style.backgroundColor = "white", 180);
+    blink.style.backgroundColor = "white";
     // reverts to original color (.5sec blink duration)
-    setTimeout(() => blink.style.backgroundColor = "", 360);
-}
-
-async function userPlay(){
-    playerChoice = [];
-    console.log("Awaiting User Input");
-
-    setTimeout(() => {
-        if(computerChoice.length === playerChoice.length){
-            console.log("Correct size");
-            return;
-        }else {
-            return "Incorrect Input"
-        }
-    }
-    , 3000);
+    setTimeout(() => blink.style.backgroundColor = "", 180);
 }
 
 // takes the computer generated color choice array and calls blink function for each color element in array;
