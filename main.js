@@ -69,12 +69,13 @@ function quitGame(){
 
 // blinks the colors passed in from cpuPlay
 function blinkColor(color){
+    console.log("blink")
     // will call button value ".color" to blink white
     const blink = document.querySelector(`.${color}`);
     console.log(color)
-    blink.style.backgroundColor = "white";
+    setTimeout(() => blink.style.backgroundColor = "white", 180);
     // reverts to original color (.5sec blink duration)
-    setTimeout(() => blink.style.backgroundColor = "", 180);
+    setTimeout(() => blink.style.backgroundColor = "", 360);
 }
 
 async function userPlay(){
@@ -95,10 +96,12 @@ async function userPlay(){
 // takes the computer generated color choice array and calls blink function for each color element in array;
 function cpuPlay(){
     computerChoice.push(newColor());
-    for(let i=0; i<computerChoice.length; i++){
-        setTimeout(blinkColor(computerChoice[i]), 3000);
-    }
-    return computerChoice;
+    computerChoice.forEach((color, i) => {
+        setTimeout(() =>{
+            blinkColor(color)
+        }, (i + 1) * 500);// increments for each element so they dont overlap and blink simultaneously
+    });
+    
 }
 
 // Menu Event Listeners
