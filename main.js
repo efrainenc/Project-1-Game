@@ -82,9 +82,11 @@ async function userPlay(computerChoice){
     // temp player storage
     let playerSequence = [];
     // this has to be able to wait for the user to input so it can be stored
-    playerSequence = await readUserInput(computerChoice);
+    playerSequence = readUserInput(computerChoice);
     // allow for string of inputs
-    return playerSequence;
+    setTimeout(() => {
+        return playerSequence
+    }, 4000 * (score+1));
 }
 
 // takes the computer generated color choice array and calls blink function for each color element in array;
@@ -100,14 +102,14 @@ function startLvl(computerChoice){
 function readUserInput(score, computerChoice){
     playerChoice = [];
     // if player and computer inputs same size then return
-    if(computerChoice.length === playerChoice.length){
-        setTimeout(() => {
-            return playerChoice
+    setTimeout(() => {
+        if(computerChoice.length === playerChoice.length){
+            return 
+        }else {
+            return "Incorrect Input"
         }
-        , 3000 * (score+1));
-    }else {
-        return "Incorrect Input"
     }
+    , 3000 * (score+1));
 }
 
 // Menu Event Listeners
