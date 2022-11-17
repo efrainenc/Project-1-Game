@@ -23,9 +23,11 @@ const quitBtn = document.querySelector(".quit");
 let score = 0;
 let highScore = 0;
 let compColor = [];
+let playerChoice = [];
+let userPlaying = false;
 
 
-// call this to find new color; (if user correct then push this return to computerChoice array)
+// Randomly selects color and outputs it
 function newColor(){
     // store possible choices
     const colors = ["red", "green", "blue", "yellow"];
@@ -34,20 +36,24 @@ function newColor(){
     return randColor;
 }
 
-// pushes new color to the array & starts the next level
+
+
+// Generates a new color sequence and awaits user input
 async function nextLvl(computerChoice){
     const computerInput = await startLvl(computerChoice);
-    console.log(computerInput);
+    console.log(computerInput[0]);
 
     // await user input
-    const userInput = await userPlay();
+    const userInput = await userPlay(computerChoice);
     console.log(userInput)
     // if user input matches computer input then begin next lvl
-    if(computerInput === userInput){
+    if(computerInput == userInput){
         console.log("WE IN!")
         score++;
         document.querySelector(".currScore").innerHTML = `Current Score: ${score}`
         nextLvl();
+    }else{
+        console.log("WRONG!");
     }
 }
 
@@ -70,11 +76,14 @@ function blinkColor(color){
     setTimeout(() => blink.style.backgroundColor = "", 180);
 }
 
-async function userPlay(){
-    // to store player color choices
+async function userPlay(computerChoice){
+    // toggle to true to allow user inputs
+    userPlaying = true;
     console.log("Waiting for player input");
-    // reads and pushes input into playerChoice
-    const playerSequence = readUserInput();
+    // temp player storage
+    let playerSequence = [];
+    // this has to be able to wait for the user to input so it can be stored
+    playerSequence = await readUserInput(computerChoice);
     // allow for string of inputs
     return playerSequence;
 }
@@ -89,28 +98,35 @@ function startLvl(computerChoice){
 }
 
 
-function readUserInput(score){
-    let playerChoice = [];
-    // Simons Colored Button Listeners
-    redBtn.addEventListener("click", () =>{
-        playerChoice.push(`${redBtn.className}`);
-    });
-    greenBtn.addEventListener("click", () =>{
-        playerChoice.push(`${greenBtn.className}`);
-    });
-    blueBtn.addEventListener("click", () =>{
-        playerChoice.push(`${blueBtn.className}`);
-    });
-    yellowBtn.addEventListener("click", () =>{
-        playerChoice.push(`${yellowBtn.className}`);
-    });
-
-    setTimeout(() => {// will return whatever playerChoice is after setTime based on score(more time allocated longer the sequence)
-        return playerChoice
+function readUserInput(score, computerChoice){
+    playerChoice = [];
+// will return whatever playerChoice is after setTime based on score(more time allocated longer the sequence)
+    if(computerChoice.length === playerChoice.length){
+        setTimeout(() => {
+            return playerChoice
+        }
+        , 3000 * (score+1));
+    }else {
+        return "Incorrect Input"
     }
-    , 3000 * (score+1));
 }
 
 // Menu Event Listeners
 startBtn.addEventListener("click", startGame)
 quitBtn.addEventListener("click", quitGame);
+// while it is the Users turn to play, buttons will return inputs so computer is not interupted;
+while(userPlaying){
+// Simons Colored Button Listeners
+redBtn.addEventListener("click", () =>{
+    playerChoice.push(`${redBtn.className}`);
+});
+greenBtn.addEventListener("click", () =>{
+    playerChoice.push(`${greenBtn.className}`);
+});
+blueBtn.addEventListener("click", () =>{
+    playerChoice.push(`${blueBtn.className}`);
+});
+yellowBtn.addEventListener("click", () =>{
+    playerChoice.push(`${yellowBtn.className}`);
+});
+}
