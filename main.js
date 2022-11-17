@@ -5,7 +5,7 @@ const greenBtn = document.querySelector(".green");
 const blueBtn = document.querySelector(".blue");
 const yellowBtn = document.querySelector(".yellow");
 const simonBtns = document.querySelectorAll(".simon");
-console.log(simonBtns)
+const h2 = document.querySelector("h2");
 // import menu buttons
 const startBtn = document.querySelector(".start");
 const quitBtn = document.querySelector(".quit");
@@ -39,33 +39,41 @@ function newColor(){
 
 
 // Generates a new color sequence and awaits user input
-async function nextLvl(){
+function nextLvl(){
     // generate new CPU sequence
-    cpuPlay(computerChoice);
+    cpuPlay(computerChoice)
     // reset playerChoice each level
     playerChoice = [];
     // wait for user input and check if correct
     setTimeout(() => {
+        h2.innerHTML = "TURN OVER!"
         console.log(playerChoice)
         console.log(computerChoice)
         if(computerChoice.values === playerChoice.values && computerChoice.length === playerChoice.length){
-            console.log("WE IN!")
+            console.log("CORRECT")
             score++;
             document.querySelector(".currScore").innerHTML = `Current Score: ${score}`
+            if(score > highScore){// set high score
+                highScore = score;
+                document.querySelector(".highScore").innerHTML = `High Score: ${score}`
+            } else if(score === 25){
+                alert("YOU WIN! YOU COMPLETED ALL 25 LEVELS!")
+            }
             nextLvl();
         }else{
             console.log("WRONG!");
+            alert("GAME OVER!")
+            return;
         }
-    }, (score+1) * 4000);// more time based on score;
+    }, (score+1) * 2500);// more time based on score;
 }
 
 // starts game and displays first sequence
 function startGame(){
+    // reset at start
     computerChoice = [];
+    score = 0;
     nextLvl();
-}
-function quitGame(){
-    // ends the game by resetting and emptying all values back to default
 }
 
 // blinks the colors passed in from cpuPlay
@@ -81,18 +89,18 @@ function blinkColor(color){
 
 // takes the computer generated color choice array and calls blink function for each color element in array;
 function cpuPlay(){
+    h2.innerHTML = "LOADING..."
     computerChoice.push(newColor());
     computerChoice.forEach((color, i) => {
         setTimeout(() =>{
             blinkColor(color)
+            h2.innerHTML = "YOUR TURN!"
         }, (i + 1) * 500);// increments for each element so they dont overlap and blink simultaneously
     });
-    
 }
 
 // Menu Event Listeners
 startBtn.addEventListener("click", startGame)
-quitBtn.addEventListener("click", quitGame);
 
 // Simons Colored Button Listeners
 redBtn.addEventListener("click", () =>{

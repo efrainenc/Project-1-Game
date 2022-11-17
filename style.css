@@ -29,16 +29,6 @@ h1, h2{
     background: none;
     text-shadow: 2px 2px 4px #000000;
 }
-.quit{
-    display: grid;
-    grid-row: 1;
-    font-family: 'Courier New', Courier, monospace;
-    color: white;
-    font-size: 40px;
-    border: none;
-    background: none;
-    text-shadow: 2px 2px 4px #000000;
-}
 /* Score Display*/
 .currScore{
     display: grid;
@@ -57,7 +47,7 @@ h1, h2{
 
 /*create 2x2 grid w/ respective colors*/
 #simon{
-    margin: 100px auto;
+    margin: 50px auto;
     width: 620px;
     height: 520px;
     display: grid;
