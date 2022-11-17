@@ -50,8 +50,8 @@ function nextLvl(){
         h2.innerHTML = "TURN OVER!"
         console.log(playerChoice)
         console.log(computerChoice)
-        if(computerChoice.values === playerChoice.values && computerChoice.length === playerChoice.length){
-            console.log("CORRECT")
+        if(computerChoice.length === playerChoice.length){
+            h2.innerHTML = "CORRECT"
             score++;
             document.querySelector(".currScore").innerHTML = `Current Score: ${score}`
             if(score > highScore){// set high score
@@ -62,8 +62,8 @@ function nextLvl(){
             }
             nextLvl();
         }else{
-            console.log("WRONG!");
-            alert("GAME OVER!")
+            h2.innerHTML = "GAME OVER!";
+            // alert("GAME OVER!")
             return;
         }
     }, (score+1) * 4000);// more time based on score;
@@ -79,13 +79,23 @@ function startGame(){
 
 // blinks the colors passed in from cpuPlay
 function blinkColor(color){
-    console.log("blink")
     // will call button value ".color" to blink white
     const blink = document.querySelector(`.${color}`);
-    console.log(color)
-    blink.style.backgroundColor = "white";
+    if(color == "red"){
+        blink.style.background = "radial-gradient(lightcoral, rgb(240, 73, 73))";
+        // play red sound
+    }else if(color == "green"){
+        blink.style.background = "radial-gradient(greenyellow, rgb(30, 153, 30))";
+        //play green sound
+    }else if(color == "blue"){
+        blink.style.background = "radial-gradient(skyblue, rgb(72, 72, 255))";
+        //play blue sound
+    }else if(color == "yellow"){
+        blink.style.background = "radial-gradient(lightyellow, gold)";
+        //play yellow sound
+    }
     // reverts to original color (.5sec blink duration)
-    setTimeout(() => blink.style.backgroundColor = "", 180);
+    setTimeout(() => blink.style.background = "", 180);
 }
 
 // takes the computer generated color choice array and calls blink function for each color element in array;
