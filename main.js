@@ -24,6 +24,7 @@ let score = 0;
 let highScore = 0;
 let compColor = [];
 let playerChoice = [];
+let computerChoice = [];
 
 
 // Randomly selects color and outputs it
@@ -38,34 +39,35 @@ function newColor(){
 
 
 // Generates a new color sequence and awaits user input
-async function nextLvl(computerChoice){
-    const computerInput = await startLvl(computerChoice);
-    console.log(computerInput[0]);
-
+async function nextLvl(){
+    cpuPlay(computerChoice);
     // await user input
-    const userInput = await userPlay(computerChoice);
-    console.log(userInput)
+    userPlay(computerChoice);
     // if user input matches computer input then begin next lvl
-    if(computerInput == userInput){
-        console.log("WE IN!")
-        score++;
-        document.querySelector(".currScore").innerHTML = `Current Score: ${score}`
-        nextLvl();
-    }else{
-        console.log("WRONG!");
-    }
+    setTimeout(() => {
+        console.log(playerChoice)
+        console.log(computerChoice)
+        if(computerChoice == playerChoice){
+            console.log("WE IN!")
+            score++;
+            document.querySelector(".currScore").innerHTML = `Current Score: ${score}`
+            nextLvl();
+        }else{
+            console.log("WRONG!");
+        }
+    }, 70000)
 }
 
 // starts game and displays first sequence
 function startGame(){
-    let computerChoice = [];
-    nextLvl(computerChoice);
+    computerChoice = [];
+    nextLvl();
 }
 function quitGame(){
     // ends the game by resetting and emptying all values back to default
 }
 
-// blinks the colors passed in from startLvl
+// blinks the colors passed in from cpuPlay
 function blinkColor(color){
     // will call button value ".color" to blink white
     const blink = document.querySelector(`.${color}`);
@@ -75,41 +77,28 @@ function blinkColor(color){
     setTimeout(() => blink.style.backgroundColor = "", 180);
 }
 
-async function userPlay(computerChoice){
-    // toggle to true to allow user inputs
-    userPlaying = true;
-    console.log("Waiting for player input");
-    // temp player storage
-    let playerSequence = [];
-    // this has to be able to wait for the user to input so it can be stored
-    playerSequence = readUserInput(computerChoice);
-    // allow for string of inputs
-    setTimeout(() => {
-        return playerSequence
-    }, 4000 * (score+1));
-}
-
-// takes the computer generated color choice array and calls blink function for each color element in array;
-function startLvl(computerChoice){
-    computerChoice.push(newColor());
-    for(let i=0; i<computerChoice.length; i++){
-        setTimeout(blinkColor(computerChoice[i]), 1000);// waits 1 second before blinking
-    }
-    return computerChoice;
-}
-
-
-function readUserInput(score, computerChoice){
+async function userPlay(){
     playerChoice = [];
-    // if player and computer inputs same size then return
+    console.log("Awaiting User Input");
+
     setTimeout(() => {
         if(computerChoice.length === playerChoice.length){
-            return 
+            console.log("Correct size");
+            return;
         }else {
             return "Incorrect Input"
         }
     }
-    , 3000 * (score+1));
+    , 3000);
+}
+
+// takes the computer generated color choice array and calls blink function for each color element in array;
+function cpuPlay(){
+    computerChoice.push(newColor());
+    for(let i=0; i<computerChoice.length; i++){
+        setTimeout(blinkColor(computerChoice[i]), 1500);// waits 1 second before blinking
+    }
+    return computerChoice;
 }
 
 // Menu Event Listeners
