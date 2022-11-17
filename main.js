@@ -24,7 +24,7 @@ let score = 0;
 let highScore = 0;
 let compColor = [];
 let playerChoice = [];
-let userPlaying = false;
+let userPlaying = true;
 
 
 // Randomly selects color and outputs it
@@ -118,15 +118,19 @@ quitBtn.addEventListener("click", quitGame);
 while(userPlaying){
 // Simons Colored Button Listeners
 redBtn.addEventListener("click", () =>{
-    playerChoice.push(`${redBtn.className}`);
+    playerChoice.push("red");
+    console.log(playerChoice);
 });
 greenBtn.addEventListener("click", () =>{
-    playerChoice.push(`${greenBtn.className}`);
+    playerChoice.push("green");
+    console.log(playerChoice);
 });
 blueBtn.addEventListener("click", () =>{
-    playerChoice.push(`${blueBtn.className}`);
+    playerChoice.push("blue");
+    console.log(playerChoice);
 });
 yellowBtn.addEventListener("click", () =>{
-    playerChoice.push(`${yellowBtn.className}`);
+    playerChoice.push("yellow");
+    console.log(playerChoice);
 });
 }
