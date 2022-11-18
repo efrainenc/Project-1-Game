@@ -69,7 +69,7 @@ function nextLvl(){
             // alert("GAME OVER!")
             return;
         }
-    }, (score+1) * 4000);// more time based on score;
+    }, (score+1) * 3000);// more time based on score;
 }
 
 // starts game and displays first sequence
@@ -86,27 +86,32 @@ function blinkColor(color){
     const blink = document.querySelector(`.${color}`);
     if(color == "red"){
         blink.style.background = "radial-gradient(lightcoral, rgb(240, 73, 73))";
+        blink.style.boxShadow = "lightcoral 0px 2px 4px 0px, lightcoral 0px 2px 16px 0px";
         // play red sound
         sounds.red.play()
         // change page bg red
     }else if(color == "green"){
         blink.style.background = "radial-gradient(greenyellow, rgb(30, 153, 30))";
+        blink.style.boxShadow = "greenyellow 0px 2px 4px 0px, greenyellow 0px 2px 16px 0px";
         //play green sound
         sounds.green.play()
         // change page bg green
     }else if(color == "blue"){
         blink.style.background = "radial-gradient(skyblue, rgb(72, 72, 255))";
+        blink.style.boxShadow = "skyblue 0px 2px 4px 0px, skyblue 0px 2px 16px 0px";
         //play blue sound
         sounds.blue.play()
         // change page bg blue
     }else if(color == "yellow"){
         blink.style.background = "radial-gradient(lightyellow, gold)";
+        blink.style.boxShadow = "lightyellow 0px 2px 4px 0px, lightyellow 0px 2px 16px 0px";
         //play yellow sound
         sounds.yellow.play()
         // change page bg yellow
     }
-    // reverts to original color (.5sec blink duration)
-    setTimeout(() => blink.style.background = "", 180);
+    // reverts to original color
+    setTimeout(() => blink.style.background = "", 165);
+    setTimeout(() => blink.style.boxShadow = "", 165);
 }
 
 // takes the computer generated color choice array and calls blink function for each color element in array;
@@ -126,17 +131,21 @@ startBtn.addEventListener("click", startGame)
 // Simons Colored Button Listeners
 redBtn.addEventListener("click", () =>{
     playerChoice.push("red");
+    blinkColor("red")
     console.log(playerChoice);
 });
 greenBtn.addEventListener("click", () =>{
     playerChoice.push("green");
+    blinkColor("green")
     console.log(playerChoice);
 });
 blueBtn.addEventListener("click", () =>{
     playerChoice.push("blue");
+    blinkColor("blue")
     console.log(playerChoice);
 });
 yellowBtn.addEventListener("click", () =>{
     playerChoice.push("yellow");
+    blinkColor("yellow")
     console.log(playerChoice);
 });
