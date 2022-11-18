@@ -20,13 +20,13 @@ const sounds = {
     boot: new Audio ("https://ia601000.us.archive.org/35/items/windowsxpstartup_201910/Windows%20XP%20Startup.wav"),
     start: new Audio ("https://ia601000.us.archive.org/35/items/windowsxpstartup_201910/Windows%20XP%20Start.wav"),
     lose: new Audio ("https://ia601000.us.archive.org/35/items/windowsxpstartup_201910/Windows%20XP%20Shutdown.wav"),
-    levelUp: new Audio ("https://ia601000.us.archive.org/35/items/windowsxpstartup_201910/Windows%20XP%20Balloon.wav"),
+    levelUp: new Audio ("https://ia601000.us.archive.org/35/items/windowsxpstartup_201910/chimes.wav"),
     win: new Audio ("https://ia601000.us.archive.org/35/items/windowsxpstartup_201910/tada.wav")
 };
 
 ////////////////////
 // Global Variables
-let score = 1;
+let score = 0;
 let highScore = 0;
 let compColor = [];
 let playerChoice = [];
@@ -50,7 +50,7 @@ function nextLvl(){
     // reset playerChoice each level
     playerChoice = [];
     // Tells user its their turn
-    setTimeout(() => h2.innerHTML = "YOUR TURN!", (score+1) * 800);
+    setTimeout(() => h2.innerHTML = "YOUR TURN!", (score+1) * 780);
 
     // wait for user input and check if correct
     setTimeout(() => {
@@ -78,7 +78,7 @@ function nextLvl(){
             nextLvl(); // start next level
         }else{
             h2.innerHTML = "GAME OVER!";
-            document.querySelector(".level").innerHTML = "Level: 0"
+            document.querySelector(".level").innerHTML = "Level: 1"
             console.log("Incorrect")
             sounds.lose.play();// play losing sound
             // alert("GAME OVER!")
@@ -96,6 +96,7 @@ function startGame(){
     // reset at start
     computerChoice = [];
     score = 0;
+    document.querySelector(".currScore").innerHTML = "Current Score: 0"
     nextLvl();
 }
 
@@ -129,8 +130,8 @@ function blinkColor(color){
         // change page bg yellow
     }
     // reverts to original color
-    setTimeout(() => blink.style.background = "", 165);
-    setTimeout(() => blink.style.boxShadow = "", 165);
+    setTimeout(() => blink.style.background = "", 170);
+    setTimeout(() => blink.style.boxShadow = "", 170);
 }
 
 // takes the computer generated color choice array and calls blink function for each color element in array;
@@ -140,7 +141,7 @@ function cpuPlay(){
     computerChoice.forEach((color, i) => {
         setTimeout(() =>{
             blinkColor(color)
-        }, (i + 1) * 500);// increments for each element so they dont overlap and blink simultaneously
+        }, (i + 1) * 610);// increments for each element so they dont overlap and blink simultaneously
     });
 }
 
