@@ -21,7 +21,7 @@ const sounds = {
 
 ////////////////////
 // Global Variables
-let score = 0;
+let score = 1;
 let highScore = 0;
 let compColor = [];
 let playerChoice = [];
@@ -48,9 +48,6 @@ function nextLvl(){
 
     // wait for user input and check if correct
     setTimeout(() => {
-        h2.innerHTML = "TURN OVER!"
-        console.log(`Player Choice is: ${playerChoice}`)
-        console.log(`Computer Choice is: ${computerChoice}`)
         // compares both arrays
         const equals = (playerChoice, computerChoice) => playerChoice.length === computerChoice.length 
         && playerChoice.every((val, i) => val === computerChoice[i]);
@@ -59,8 +56,8 @@ function nextLvl(){
         if(equals(playerChoice, computerChoice) === true){
             // if correct, tell user and increment score
             h2.innerHTML = "CORRECT"
-            console.log(`CORRECT`)
             score++;
+            document.querySelector(".level").innerHTML = `Level: ${score+1}`
             document.querySelector(".currScore").innerHTML = `Current Score: ${score}`
             if(score > highScore){// set high score
                 highScore = score;
