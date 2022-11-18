@@ -17,6 +17,10 @@ const sounds = {
     green: new Audio("https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"),
     blue: new Audio("https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"),
     yellow: new Audio ("https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"),
+    boot: new Audio (),
+    start: new Audio (),
+    lose: new Audio (),
+    levelUp: new Audio ()
 };
 
 ////////////////////
@@ -27,6 +31,7 @@ let compColor = [];
 let playerChoice = [];
 let computerChoice = [];
 
+// play windows bootup sound on page open
 
 // Randomly selects color and outputs it
 function newColor(){
@@ -54,6 +59,7 @@ function nextLvl(){
 
         // if both arrays equal then go to next level
         if(equals(playerChoice, computerChoice) === true){
+            // play windows tada sound
             // if correct, tell user and increment score
             h2.innerHTML = "CORRECT"
             score++;
@@ -69,15 +75,19 @@ function nextLvl(){
             nextLvl(); // start next level
         }else{
             h2.innerHTML = "GAME OVER!";
+            document.querySelector(".level").innerHTML = "Level: 0"
             console.log("Incorrect")
             // alert("GAME OVER!")
             return;
+            // play windows shutdown
         }
-    }, (score+1) * 3000);// more time based on score;
+    }, ((score/2)+1) * 3000);// more time based on score;
 }
 
 // starts game and displays first sequence
 function startGame(){
+    // play windows start sound
+    // also have recycle bin sound for quiting
     // reset at start
     computerChoice = [];
     score = 0;
