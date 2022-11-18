@@ -17,10 +17,11 @@ const sounds = {
     green: new Audio("https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"),
     blue: new Audio("https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"),
     yellow: new Audio ("https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"),
-    boot: new Audio (),
-    start: new Audio (),
-    lose: new Audio (),
-    levelUp: new Audio ()
+    boot: new Audio ("https://ia601000.us.archive.org/35/items/windowsxpstartup_201910/Windows%20XP%20Startup.wav"),
+    start: new Audio ("https://ia601000.us.archive.org/35/items/windowsxpstartup_201910/Windows%20XP%20Start.wav"),
+    lose: new Audio ("https://ia601000.us.archive.org/35/items/windowsxpstartup_201910/Windows%20XP%20Shutdown.wav"),
+    levelUp: new Audio ("https://ia601000.us.archive.org/35/items/windowsxpstartup_201910/Windows%20XP%20Balloon.wav"),
+    win: new Audio ("https://ia601000.us.archive.org/35/items/windowsxpstartup_201910/tada.wav")
 };
 
 ////////////////////
@@ -32,7 +33,7 @@ let playerChoice = [];
 let computerChoice = [];
 
 // play windows bootup sound on page open
-
+sounds.boot.play();
 // Randomly selects color and outputs it
 function newColor(){
     // store possible choices
@@ -59,7 +60,8 @@ function nextLvl(){
 
         // if both arrays equal then go to next level
         if(equals(playerChoice, computerChoice) === true){
-            // play windows tada sound
+            // play windows sound
+            sounds.levelUp.play();
             // if correct, tell user and increment score
             h2.innerHTML = "CORRECT"
             score++;
@@ -70,6 +72,7 @@ function nextLvl(){
                 document.querySelector(".highScore").innerHTML = `High Score: ${score}`
             } else if(score === 25){ // Winning score
                 alert("YOU WIN! YOU COMPLETED ALL 25 LEVELS!")
+                sounds.win.play(); // plays tada sound
                 return;
             }
             nextLvl(); // start next level
@@ -77,6 +80,7 @@ function nextLvl(){
             h2.innerHTML = "GAME OVER!";
             document.querySelector(".level").innerHTML = "Level: 0"
             console.log("Incorrect")
+            sounds.lose.play();// play losing sound
             // alert("GAME OVER!")
             return;
             // play windows shutdown
@@ -87,6 +91,7 @@ function nextLvl(){
 // starts game and displays first sequence
 function startGame(){
     // play windows start sound
+    sounds.start.play();
     // also have recycle bin sound for quiting
     // reset at start
     computerChoice = [];
