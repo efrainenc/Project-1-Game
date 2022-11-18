@@ -49,11 +49,17 @@ function nextLvl(){
     // wait for user input and check if correct
     setTimeout(() => {
         h2.innerHTML = "TURN OVER!"
-        console.log(playerChoice)
-        console.log(computerChoice)
-        if(computerChoice.length === playerChoice.length){
+        console.log(`Player Choice is: ${playerChoice}`)
+        console.log(`Computer Choice is: ${computerChoice}`)
+        // compares both arrays
+        const equals = (playerChoice, computerChoice) => playerChoice.length === computerChoice.length 
+        && playerChoice.every((val, i) => val === computerChoice[i]);
+
+        // if both arrays equal then go to next level
+        if(equals(playerChoice, computerChoice) === true){
             // if correct, tell user and increment score
             h2.innerHTML = "CORRECT"
+            console.log(`CORRECT`)
             score++;
             document.querySelector(".currScore").innerHTML = `Current Score: ${score}`
             if(score > highScore){// set high score
@@ -66,6 +72,7 @@ function nextLvl(){
             nextLvl(); // start next level
         }else{
             h2.innerHTML = "GAME OVER!";
+            console.log("Incorrect")
             // alert("GAME OVER!")
             return;
         }
@@ -86,25 +93,25 @@ function blinkColor(color){
     const blink = document.querySelector(`.${color}`);
     if(color == "red"){
         blink.style.background = "radial-gradient(lightcoral, rgb(240, 73, 73))";
-        blink.style.boxShadow = "lightcoral 0px 2px 4px 0px, lightcoral 0px 2px 16px 0px";
+        blink.style.boxShadow = "lightcoral 0px 2px 4px 0px, lightcoral 0px 2px 4px 0px";
         // play red sound
         sounds.red.play()
         // change page bg red
     }else if(color == "green"){
         blink.style.background = "radial-gradient(greenyellow, rgb(30, 153, 30))";
-        blink.style.boxShadow = "greenyellow 0px 2px 4px 0px, greenyellow 0px 2px 16px 0px";
+        blink.style.boxShadow = "greenyellow 0px 2px 4px 0px, greenyellow 0px 2px 4px 0px";
         //play green sound
         sounds.green.play()
         // change page bg green
     }else if(color == "blue"){
         blink.style.background = "radial-gradient(skyblue, rgb(72, 72, 255))";
-        blink.style.boxShadow = "skyblue 0px 2px 4px 0px, skyblue 0px 2px 16px 0px";
+        blink.style.boxShadow = "skyblue 0px 2px 4px 0px, skyblue 0px 2px 4px 0px";
         //play blue sound
         sounds.blue.play()
         // change page bg blue
     }else if(color == "yellow"){
         blink.style.background = "radial-gradient(lightyellow, gold)";
-        blink.style.boxShadow = "lightyellow 0px 2px 4px 0px, lightyellow 0px 2px 16px 0px";
+        blink.style.boxShadow = "lightyellow 0px 2px 4px 0px, lightyellow 0px 2px 4px 0px";
         //play yellow sound
         sounds.yellow.play()
         // change page bg yellow
