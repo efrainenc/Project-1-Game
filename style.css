@@ -1,16 +1,21 @@
 /* Core Body and Text*/
+@font-face {
+    font-family: "W95FA";
+    src: url("./font/W95FA/W95FA.otf");
+    font-style: normal;
+}
+
 body{
     display: grid;
     background:  url("./images/windowsXP.png"), linear-gradient(180deg, rgba(144,178,216,1) 0%, rgba(193,227,255,1) 50%, rgba(233,248,255,1) 100%);
-    font-family: 'Microsoft Sans Serif';
     background-repeat: no-repeat;
     background-position: center;
+    font-family: "W95FA";
 }
 h1, h2, h3{
     display: grid;
     justify-content: center;
-    color: white;
-    text-shadow: 2px 2px 4px #000000;
+    color: black;
 }
 @keyframes animate {
     0% {
@@ -41,10 +46,11 @@ h1, h2, h3{
     height: 30px;
     background: rgb(207, 207, 207);
     align-content: center;
+    font-family: "W95FA";
 }
 .start{
     grid-row: 1;
-    font-family: 'Microsoft Sans Serif', Courier, monospace;
+    font-family: 'W95FA';
     color: black;
     font-size: 25px;
     border: none;
@@ -69,7 +75,7 @@ h1, h2, h3{
 
 /*create 2x2 grid w/ respective colors*/
 #simon{
-    margin: 40px auto;
+    margin: 65px auto;
     width: 415px;
     height: 415px;
     display: grid;
