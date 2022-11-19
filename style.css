@@ -1,7 +1,7 @@
 /* Core Body and Text*/
 body{
     display: grid;
-    background:  url("./images/windowsXPfix.png"), linear-gradient(180deg, rgba(144,178,216,1) 0%, rgba(193,227,255,1) 50%, rgba(233,248,255,1) 100%);
+    background:  url("./images/windowsXP.png"), linear-gradient(180deg, rgba(144,178,216,1) 0%, rgba(193,227,255,1) 50%, rgba(233,248,255,1) 100%);
     font-family: 'Microsoft Sans Serif';
     background-repeat: no-repeat;
     background-position: center;
@@ -12,14 +12,13 @@ h1, h2, h3{
     color: white;
     text-shadow: 2px 2px 4px #000000;
 }
-.sky{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: url();
-    background-size: cover;
+@keyframes animate {
+    0% {
+        background-position: 0px;
+    }
+    100% {
+        background-position: 5440px; /* change this to width of cloud image */
+    }
 }
 .cloud{
     position: absolute;
@@ -31,45 +30,41 @@ h1, h2, h3{
     background-size: cover;
     animation: animate 60s linear infinite;
 }
-@keyframes animate {
-    0% {
-        background-position: 0px;
-    }
-    100% {
-        background-position: 5440px; /* change this to width of cloud image */
-    }
-}
+
 /* Start and Quit Menu */
 #menu{
     display: grid;
     justify-content: space-between;
+    bottom: 0;
+    position: absolute;
+    width: 95%;
+    height: 30px;
+    background: rgb(207, 207, 207);
+    align-content: center;
 }
 .start{
     grid-row: 1;
     font-family: 'Microsoft Sans Serif', Courier, monospace;
-    color: white;
-    font-size: 40px;
+    color: black;
+    font-size: 25px;
     border: none;
-    background: none;
-    text-shadow: 2px 2px 4px #000000;
-    margin: 30px auto;
+    height: 30px;
+    align-self: center;
+    background: rgb(207, 207, 207);
 }
+
 /* Score Display*/
 .currScore{
     display: grid;
     grid-row: 1;
-    color: white;
-    font-size: 30px;
-    text-shadow: 2px 2px 4px #000000;
-    margin: 30px auto;
+    color: black;
+    font-size: 25px;
 }
 .highScore{
     display: grid;
     grid-row: 1;
-    color: white;
-    font-size: 30px;
-    text-shadow: 2px 2px 4px #000000;
-    margin: 30px auto;
+    color: black;
+    font-size: 25px;
 }
 
 /*create 2x2 grid w/ respective colors*/
