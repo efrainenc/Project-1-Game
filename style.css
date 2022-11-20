@@ -26,16 +26,32 @@ body{
     border-top-color: #ffffff;
     border-left-color: #ffffff;
 }
+.windowContent{
+    background-color: #ffffff;
+    border: 2px solid #7c7c7c;
+    border-bottom-color: #ffffff;
+    border-right-color: #ffffff;
+    margin: 0px auto;
+    padding: 4px;
+    margin-left: 1px;
+    margin-right: 1px;
+    margin-bottom: 2px;
+    width: auto;
+}
 h1{
     display: grid;
     justify-content: left;
-    margin-top: 2px;
-    font-size: 24px;
+    align-self: center;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    margin-left: 2px;
+    font-size: 20px;
+    font-weight: normal;
     color: white;
     background: linear-gradient(90deg, #000b7c, #377cc6);
     padding: 3px;
     height: 29px;
-    width: 285px;
+    width: 290px;
 }
 h2{
     display: grid;
