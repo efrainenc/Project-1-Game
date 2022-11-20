@@ -105,25 +105,25 @@ function blinkColor(color){
     // will call button value ".color" to blink white
     const blink = document.querySelector(`.${color}`);
     if(color == "red"){
-        blink.style.background = "radial-gradient(lightcoral, rgb(240, 73, 73))";
-        blink.style.boxShadow = "lightcoral 0px 2px 4px 0px, lightcoral 0px 2px 4px 0px";
+        blink.style.background = "radial-gradient(coral, #fe0000)";
+        blink.style.boxShadow = "coral 0px 2px 4px 0px, coral 0px 2px 4px 0px";
         // play red sound
         sounds.red.play()
         // change page bg red
     }else if(color == "green"){
-        blink.style.background = "radial-gradient(greenyellow, rgb(30, 153, 30))";
+        blink.style.background = "radial-gradient(greenyellow, #06ff04)";
         blink.style.boxShadow = "greenyellow 0px 2px 4px 0px, greenyellow 0px 2px 4px 0px";
         //play green sound
         sounds.green.play()
         // change page bg green
     }else if(color == "blue"){
-        blink.style.background = "radial-gradient(skyblue, rgb(72, 72, 255))";
+        blink.style.background = "radial-gradient(skyblue, #0000ff)";
         blink.style.boxShadow = "skyblue 0px 2px 4px 0px, skyblue 0px 2px 4px 0px";
         //play blue sound
         sounds.blue.play()
         // change page bg blue
     }else if(color == "yellow"){
-        blink.style.background = "radial-gradient(lightyellow, gold)";
+        blink.style.background = "radial-gradient(lightyellow, #ffff04)";
         blink.style.boxShadow = "lightyellow 0px 2px 4px 0px, lightyellow 0px 2px 4px 0px";
         //play yellow sound
         sounds.yellow.play()
