@@ -10,6 +10,8 @@ const h2 = document.querySelector("h2");
 const startBtn = document.querySelector(".start");
 const quitBtn = document.querySelector(".quit");
 
+const level = document.querySelector(".level");
+
 /////////////////
 // Sound Storage
 const sounds = {
@@ -63,9 +65,9 @@ function nextLvl(){
             // play windows sound
             sounds.levelUp.play();
             // if correct, tell user and increment score
-            h2.innerHTML = "CORRECT"
+            level.innerHTML = "Correct!⭐"
             score++;
-            document.querySelector(".level").innerHTML = `Level: ${score+1}`
+            setTimeout(() => level.innerHTML = `Level: ${score+1}`, 220);
             document.querySelector(".currScore").innerHTML = `Current Score: ${score}`
             if(score > highScore){// set high score
                 highScore = score;
@@ -78,7 +80,7 @@ function nextLvl(){
             nextLvl(); // start next level
         }else{
             h2.innerHTML = "GAME OVER!";
-            document.querySelector(".level").innerHTML = "Level: 1"
+            level.innerHTML = "Level: ❌"
             console.log("Incorrect")
             sounds.lose.play();// play losing sound
             // alert("GAME OVER!")
@@ -96,6 +98,7 @@ function startGame(){
     // reset at start
     computerChoice = [];
     score = 0;
+    level.innerHTML = "Level: 1"
     document.querySelector(".currScore").innerHTML = "Current Score: 0"
     nextLvl();
 }
@@ -136,7 +139,7 @@ function blinkColor(color){
 
 // takes the computer generated color choice array and calls blink function for each color element in array;
 function cpuPlay(){
-    h2.innerHTML = "LOADING..."
+    setTimeout(() => h2.innerHTML = "LOADING...", 100);
     computerChoice.push(newColor());
     computerChoice.forEach((color, i) => {
         setTimeout(() =>{
