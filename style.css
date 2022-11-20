@@ -5,9 +5,42 @@
     font-style: normal;
 }
 
+/* Clouds */
+.field{
+    position: absolute;
+    top: 0;
+    left:0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    background: url("./images/windowsXP.png");
+    background-position: center;
+    background-size: cover;
+    z-index: 2;
+}
+.clouds {
+    position: absolute;
+    top: 0;
+    left:0;
+    width: 100%;
+    height: 60%;
+    background: url("./images/cloud.png");
+    animation: animate 60s linear infinite;
+    z-index: 1;
+}
+@keyframes animate {
+    0% {
+        background-position: 0px;
+    }
+    100% {
+        background-position: 5440px;
+    }
+}
+
 body{
     display: grid;
-    background:  url("./images/windowsXP.png"), linear-gradient(180deg, rgba(144,178,216,1) 0%, rgba(193,227,255,1) 50%, rgba(233,248,255,1) 100%);
+    background: linear-gradient(180deg, rgba(144,178,216,1) 0%, rgba(193,227,255,1) 50%, rgba(233,248,255,1) 100%);
     background-repeat: no-repeat;
     background-position: center;
     font-family: "W95FA";
@@ -25,6 +58,7 @@ body{
     border: 2px solid #7c7c7c;
     border-top-color: #ffffff;
     border-left-color: #ffffff;
+    z-index: 3;
 }
 .windowContent{
     background-color: #ffffff;
@@ -97,6 +131,7 @@ h3{
     background: #bebebe;
     align-content: center;
     border-top: 2px solid #ffff;
+    z-index: 3;
 }
 .start {
     position: absolute;
@@ -165,6 +200,7 @@ h3{
     border-radius: 5px;
     background-color: rgb(24, 24, 24);
     padding: 18px;
+    z-index: 3;
 }
 .red{
     background-color: #fe0000;
