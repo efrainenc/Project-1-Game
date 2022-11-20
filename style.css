@@ -38,10 +38,30 @@ body{
     margin-bottom: 2px;
     width: auto;
 }
+.closeWindow{
+    display: grid;
+    width: 27px;
+    height: 27px;
+    font-family: "Arial Black", sans-serif;
+    box-sizing: border-box;
+    font-size: 15px;
+    line-height: 50%;
+    position: absolute;
+    color: black;
+    margin: 7px 5px auto;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    justify-self: end;
+    background-color: #bebebe;
+    border: 2px solid #7c7c7c;
+    border-top-color: #ffffff;
+    border-left-color: #ffffff;
+}
 h1{
     display: grid;
     justify-content: left;
-    align-self: center;
+    align-content: center;
     margin-top: 3px;
     margin-bottom: 3px;
     margin-left: 2px;
@@ -93,6 +113,7 @@ h3{
     border: 2px solid #7c7c7c;
     border-top-color: #ffffff;
     border-left-color: #ffffff;
+    cursor: pointer;
 }
 
 /* Score Display*/
@@ -150,23 +171,26 @@ h3{
     border-radius: 5px;
     border-color: #7e0000;
     box-shadow: 2px 2px 4px #000000;
-    size: 75%;
+    cursor: pointer;
 }
 .green{
     background-color: #06ff04;
     border-radius: 5px;
     border-color: #047e00;
     box-shadow: 2px 2px 4px #000000;
+    cursor: pointer;
 }
 .blue{
     background-color: #0000ff;
     border-radius: 5px;
     border-color: #00007e;
     box-shadow: 2px 2px 4px #000000;
+    cursor: pointer;
 }
 .yellow{
     background-color: #ffff04;
     border-radius: 5px;
     border-color: #7e7e00;
     box-shadow: 2px 2px 4px #000000;
+    cursor: pointer;
 }
