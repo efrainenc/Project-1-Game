@@ -30,7 +30,6 @@ const sounds = {
 // Global Variables
 let score = 0;
 let highScore = 0;
-let compColor = [];
 let playerChoice = [];
 let computerChoice = [];
 
@@ -67,13 +66,13 @@ function nextLvl(){
             // if correct, tell user and increment score
             level.innerHTML = "Correct!⭐"
             score++;
-            setTimeout(() => level.innerHTML = `Level: ${score+1}`, 220);
+            setTimeout(() => level.innerHTML = `Level: ${score+1}`, 230);
             document.querySelector(".currScore").innerHTML = `Current Score: ${score}`
             if(score > highScore){// set high score
                 highScore = score;
                 document.querySelector(".highScore").innerHTML = `High Score: ${score}`
             } else if(score === 25){ // Winning score
-                alert("YOU WIN! YOU COMPLETED ALL 25 LEVELS!")
+                alert("YOU WIN! YOU COMPLETED ALL 25 LEVELS!⭐")
                 sounds.win.play(); // plays tada sound
                 return;
             }
@@ -81,13 +80,12 @@ function nextLvl(){
         }else{
             h2.innerHTML = "GAME OVER!";
             level.innerHTML = "Level: ❌"
-            console.log("Incorrect")
             sounds.lose.play();// play losing sound
             // alert("GAME OVER!")
             return;
             // play windows shutdown
         }
-    }, ((score/2)+1) * 3000);// more time based on score;
+    }, ((score/2)+1) * 3550);// more time based on score;
 }
 
 // starts game and displays first sequence
@@ -110,27 +108,19 @@ function blinkColor(color){
     if(color == "red"){
         blink.style.background = "radial-gradient(coral, #fe0000)";
         blink.style.boxShadow = "coral 0px 2px 4px 0px, coral 0px 2px 4px 0px";
-        // play red sound
         sounds.red.play()
-        // change page bg red
     }else if(color == "green"){
         blink.style.background = "radial-gradient(greenyellow, #06ff04)";
         blink.style.boxShadow = "greenyellow 0px 2px 4px 0px, greenyellow 0px 2px 4px 0px";
-        //play green sound
         sounds.green.play()
-        // change page bg green
     }else if(color == "blue"){
         blink.style.background = "radial-gradient(skyblue, #0000ff)";
         blink.style.boxShadow = "skyblue 0px 2px 4px 0px, skyblue 0px 2px 4px 0px";
-        //play blue sound
         sounds.blue.play()
-        // change page bg blue
     }else if(color == "yellow"){
         blink.style.background = "radial-gradient(lightyellow, #ffff04)";
         blink.style.boxShadow = "lightyellow 0px 2px 4px 0px, lightyellow 0px 2px 4px 0px";
-        //play yellow sound
         sounds.yellow.play()
-        // change page bg yellow
     }
     // reverts to original color
     setTimeout(() => blink.style.background = "", 170);
@@ -144,10 +134,11 @@ function cpuPlay(){
     computerChoice.forEach((color, i) => {
         setTimeout(() =>{
             blinkColor(color)
-        }, (i + 1) * 610);// increments for each element so they dont overlap and blink simultaneously
+        }, (i + 1) * 615);// increments for each element so they dont overlap and blink simultaneously
     });
 }
 
+////////////////////////
 // Menu Event Listeners
 startBtn.addEventListener("click", startGame)
 
@@ -155,20 +146,16 @@ startBtn.addEventListener("click", startGame)
 redBtn.addEventListener("click", () =>{
     playerChoice.push("red");
     blinkColor("red")
-    console.log(playerChoice);
 });
 greenBtn.addEventListener("click", () =>{
     playerChoice.push("green");
     blinkColor("green")
-    console.log(playerChoice);
 });
 blueBtn.addEventListener("click", () =>{
     playerChoice.push("blue");
     blinkColor("blue")
-    console.log(playerChoice);
 });
 yellowBtn.addEventListener("click", () =>{
     playerChoice.push("yellow");
     blinkColor("yellow")
-    console.log(playerChoice);
 });

@@ -1,23 +1,12 @@
-/* Core Body and Text*/
-@font-face {
-    font-family: "W95FA";
-    src: url("./font/W95FA/W95FA.otf");
-    font-style: normal;
-}
-
 /* Clouds */
 .field{
     position: absolute;
-    top: 0;
-    left:0;
-    bottom: 0;
-    right: 0;
     width: 100%;
     height: 100vh;
     background: url("./images/windowsXP.png");
     background-position: center;
     background-size: cover;
-    z-index: 2;
+    z-index: 2; /* z-indexes to let me layer multiple backgrounds*/
 }
 .clouds {
     position: absolute;
@@ -34,8 +23,15 @@
         background-position: 0px;
     }
     100% {
-        background-position: 5440px;
+        background-position: 5440px; /* set to width of chosen image*/
     }
+}
+
+/* Core Body and Text*/
+@font-face {
+    font-family: "W95FA";
+    src: url("./font/W95FA/W95FA.otf");
+    font-style: normal;
 }
 
 body{

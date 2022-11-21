@@ -7,7 +7,7 @@ Simon
 
 Pseudocode for the overall gameplay:
 
-init a 2x2 grid
+initialize a 2x2 grid
 create 4 total elements with different color values
 randomly select a value to blink
 await for blink to complete
@@ -23,7 +23,7 @@ continue game loop;
 
 A wireframe of your "main" game screen:
 
-I did pen and paper sketch
+Pen and paper sketch
 
 
 
