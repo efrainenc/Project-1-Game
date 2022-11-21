@@ -61,7 +61,6 @@ function nextLvl(){
 
         // if both arrays equal then go to next level
         if(equals(playerChoice, computerChoice) === true){
-            // play windows sound
             sounds.levelUp.play();
             // if correct, tell user and increment score
             level.innerHTML = "Correct!⭐"
@@ -83,7 +82,6 @@ function nextLvl(){
             sounds.lose.play();// play losing sound
             // alert("GAME OVER!")
             return;
-            // play windows shutdown
         }
     }, ((score/2)+1) * 3550);// more time based on score;
 }
