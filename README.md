@@ -1,6 +1,6 @@
 # Simon Says: 
-This is a Sequence memorizing game themed after classic windows.
-This project was made for General Assembly
+- This is a Sequence memorizing game themed after classic windows.
+- This project was made for General Assembly
 
 ## Screenshot(s): 
 ![Game](https://i.gyazo.com/c8c3908a06001898f2cbcb1e5b38ed13.jpg "Main Screen")
@@ -9,17 +9,17 @@ This project was made for General Assembly
 ![Game Over](https://i.gyazo.com/302dadfa1159f139320a6da66d8584ee.jpg "Game Over Screen")
 
 ## Technologies Used: 
-☐ HTML
-☐ CSS
-☐ JavaScript
+- HTML
+- CSS
+- JavaScript
 
 ## Getting Started: 
-☐[Game Link](https://efrainenc.github.io/Project-1-Game/)
+-[Game Link](https://efrainenc.github.io/Project-1-Game/)
 
-☐ To play you hit the start button at the bottom left and just wait for the computer to generate a sequence 
+- To play you hit the start button at the bottom left and just wait for the computer to generate a sequence 
   and match it as fast as you can. 
-NOTE: You have 4+ sec (which scales by level) to answer before Game is over!
+- NOTE: You have 4+ sec (which scales by level) to answer before Game is over!
 
 ## Next Steps:
-☐ Allow player to choose between timed and untimed modes as well as a visible timer
-☐ Add mobile compatability
+- Allow player to choose between timed and untimed modes as well as a visible timer
+- Add mobile compatability
